@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Academy Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/front/index.html" id="navbar__logo">
+                <header class="header">
+                    <img src="/front/resources/ghrd-logo.png" alt="GHRD Logo" class="logo_GHRD">
+                    <img src="/front/resources/ngun_logo.png" alt="NGUN Logo" class="logo_NGUN">
+                </header>
+            </a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/front/index.html" class="navbar__links">Event</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/front/program.html" class="navbar__links">Program</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="/front/form.html" class="button">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Registration Form -->
+    <div class="wrapper">
+        <div class="form__container">
+            <h2>New Generation United Nations Registration Form</h2>
+        
+            <form action="#" method="post">
+        
+                <!-- Email -->
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        
+                <!-- Full Legal Name -->
+                <label for="full-name">Full Legal Name:</label>
+                <input type="text" id="full-name" name="full-name" placeholder="Enter your full legal name" required>
+        
+                <!-- Gender -->
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Non-binary">Non-binary</option>
+                    <option value="Genderqueer">Genderqueer</option>
+                    <option value="Genderfluid">Genderfluid</option>
+                    <option value="Self-describe">Prefer to self-describe</option>
+                    <option value="Prefer-not-to-say">Prefer not to say</option>
+                </select>
+        
+                <!-- Self-describe Gender -->
+                <label for="self-describe">If self-describe, please specify:</label>
+                <input type="text" id="self-describe" name="self-describe" placeholder="Specify your gender">
+        
+                <!-- Date of Birth -->
+                <label for="dob">Date of Birth (D.o.B):</label>
+                <input type="date" id="dob" name="dob" required>
+        
+                <!-- Nationality -->
+                <label for="nationality">Nationality:</label>
+                <select id="nationality" name="nationality" required>
+                    <option value="">Select Nationality</option>
+                    <!-- Country Options -->
+                    <script>
+                        const countries = [
+  "Afghanistan",
+  "Albania",
+  "Algeria",
+  "American Samoa",
+  "Andorra",
+  "Angola",
+  "Anguilla",
+  "Antarctica",
+  "Antigua and Barbuda",
+  "Argentina",
+  "Armenia",
+  "Aruba",
+  "Australia",
+  "Austria",
+  "Azerbaijan",
+  "Bahamas (the)",
+  "Bahrain",
+  "Bangladesh",
+  "Barbados",
+  "Belarus",
+  "Belgium",
+  "Belize",
+  "Benin",
+  "Bermuda",
+  "Bhutan",
+  "Bolivia (Plurinational State of)",
+  "Bonaire, Sint Eustatius and Saba",
+  "Bosnia and Herzegovina",
+  "Botswana",
+  "Bouvet Island",
+  "Brazil",
+  "British Indian Ocean Territory (the)",
+  "Brunei Darussalam",
+  "Bulgaria",
+  "Burkina Faso",
+  "Burundi",
+  "Cabo Verde",
+  "Cambodia",
+  "Cameroon",
+  "Canada",
+  "Cayman Islands (the)",
+  "Central African Republic (the)",
+  "Chad",
+  "Chile",
+  "China",
+  "Christmas Island",
+  "Cocos (Keeling) Islands (the)",
+  "Colombia",
+  "Comoros (the)",
+  "Congo (the Democratic Republic of the)",
+  "Congo (the)",
+  "Cook Islands (the)",
+  "Costa Rica",
+  "Croatia",
+  "Cuba",
+  "Curaçao",
+  "Cyprus",
+  "Czechia",
+  "Côte d'Ivoire",
+  "Denmark",
+  "Djibouti",
+  "Dominica",
+  "Dominican Republic (the)",
+  "Ecuador",
+  "Egypt",
+  "El Salvador",
+  "Equatorial Guinea",
+  "Eritrea",
+  "Estonia",
+  "Eswatini",
+  "Ethiopia",
+  "Falkland Islands (the) [Malvinas]",
+  "Faroe Islands (the)",
+  "Fiji",
+  "Finland",
+  "France",
+  "French Guiana",
+  "French Polynesia",
+  "French Southern Territories (the)",
+  "Gabon",
+  "Gambia (the)",
+  "Georgia",
+  "Germany",
+  "Ghana",
+  "Gibraltar",
+  "Greece",
+  "Greenland",
+  "Grenada",
+  "Guadeloupe",
+  "Guam",
+  "Guatemala",
+  "Guernsey",
+  "Guinea",
+  "Guinea-Bissau",
+  "Guyana",
+  "Haiti",
+  "Heard Island and McDonald Islands",
+  "Holy See (the)",
+  "Honduras",
+  "Hong Kong",
+  "Hungary",
+  "Iceland",
+  "India",
+  "Indonesia",
+  "Iran (Islamic Republic of)",
+  "Iraq",
+  "Ireland",
+  "Isle of Man",
+  "Israel",
+  "Italy",
+  "Jamaica",
+  "Japan",
+  "Jersey",
+  "Jordan",
+  "Kazakhstan",
+  "Kenya",
+  "Kiribati",
+  "Korea (the Democratic People's Republic of)",
+  "Korea (the Republic of)",
+  "Kuwait",
+  "Kyrgyzstan",
+  "Lao People's Democratic Republic (the)",
+  "Latvia",
+  "Lebanon",
+  "Lesotho",
+  "Liberia",
+  "Libya",
+  "Liechtenstein",
+  "Lithuania",
+  "Luxembourg",
+  "Macao",
+  "Madagascar",
+  "Malawi",
+  "Malaysia",
+  "Maldives",
+  "Mali",
+  "Malta",
+  "Marshall Islands (the)",
+  "Martinique",
+  "Mauritania",
+  "Mauritius",
+  "Mayotte",
+  "Mexico",
+  "Micronesia (Federated States of)",
+  "Moldova (the Republic of)",
+  "Monaco",
+  "Mongolia",
+  "Montenegro",
+  "Montserrat",
+  "Morocco",
+  "Mozambique",
+  "Myanmar",
+  "Namibia",
+  "Nauru",
+  "Nepal",
+  "Netherlands (the)",
+  "New Caledonia",
+  "New Zealand",
+  "Nicaragua",
+  "Niger (the)",
+  "Nigeria",
+  "Niue",
+  "Norfolk Island",
+  "Northern Mariana Islands (the)",
+  "Norway",
+  "Oman",
+  "Pakistan",
+  "Palau",
+  "Palestine, State of",
+  "Panama",
+  "Papua New Guinea",
+  "Paraguay",
+  "Peru",
+  "Philippines (the)",
+  "Pitcairn",
+  "Poland",
+  "Portugal",
+  "Puerto Rico",
+  "Qatar",
+  "Republic of North Macedonia",
+  "Romania",
+  "Russian Federation (the)",
+  "Rwanda",
+  "Réunion",
+  "Saint Barthélemy",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Saint Kitts and Nevis",
+  "Saint Lucia",
+  "Saint Martin (French part)",
+  "Saint Pierre and Miquelon",
+  "Saint Vincent and the Grenadines",
+  "Samoa",
+  "San Marino",
+  "Sao Tome and Principe",
+  "Saudi Arabia",
+  "Senegal",
+  "Serbia",
+  "Seychelles",
+  "Sierra Leone",
+  "Singapore",
+  "Sint Maarten (Dutch part)",
+  "Slovakia",
+  "Slovenia",
+  "Solomon Islands",
+  "Somalia",
+  "South Africa",
+  "South Georgia and the South Sandwich Islands",
+  "South Sudan",
+  "Spain",
+  "Sri Lanka",
+  "Sudan (the)",
+  "Suriname",
+  "Svalbard and Jan Mayen",
+  "Sweden",
+  "Switzerland",
+  "Syrian Arab Republic",
+  "Taiwan",
+  "Tajikistan",
+  "Tanzania, United Republic of",
+  "Thailand",
+  "Timor-Leste",
+  "Togo",
+  "Tokelau",
+  "Tonga",
+  "Trinidad and Tobago",
+  "Tunisia",
+  "Turkey",
+  "Turkmenistan",
+  "Turks and Caicos Islands (the)",
+  "Tuvalu",
+  "Uganda",
+  "Ukraine",
+  "United Arab Emirates (the)",
+  "United Kingdom of Great Britain and Northern Ireland (the)",
+  "United States Minor Outlying Islands (the)",
+  "United States of America (the)",
+  "Uruguay",
+  "Uzbekistan",
+  "Vanuatu",
+  "Venezuela (Bolivarian Republic of)",
+  "Viet Nam",
+  "Virgin Islands (British)",
+  "Virgin Islands (U.S.)",
+  "Wallis and Futuna",
+  "Western Sahara",
+  "Yemen",
+  "Zambia",
+  "Zimbabwe",
+  "Åland Islands",
+];
+
+                        countries.forEach(country => {
+                            document.write(`<option value="${country}">${country}</option>`);
+                        });
+                    </script>
+                </select>
+        
+                <!-- Organization/Institution -->
+                <label for="organization">Name of Organization / Educational Institute / Community:</label>
+                <input type="text" id="organization" name="organization" placeholder="Enter organization/institution name" required>
+        
+                <!-- Role/Title -->
+                <label for="role">Role/Title:</label>
+                <input type="text" id="role" name="role" placeholder="Enter your role or title" required>
+        
+                <!-- Country of Residence -->
+                <label for="residence">Country of Residence:</label>
+                <select id="residence" name="residence" required>
+                    <option value="">Select Country of Residence</option>
+                    <script>
+                        countries.forEach(country => {
+                            document.write(`<option value="${country}">${country}</option>`);
+                        });
+                    </script>
+                </select>
+        
+                <!-- LinkedIn Profile -->
+                <label for="linkedin">LinkedIn Profile:</label>
+                <input type="url" id="linkedin" name="linkedin" placeholder="Enter your LinkedIn profile URL">
+        
+                <!-- Attending Virtually -->
+                <label>Are you attending virtually?</label>
+                <div>
+                    <input type="radio" id="virtual-yes" name="attending-virtually" value="Yes" required>
+                    <label for="virtual-yes">Yes</label>
+                    <input type="radio" id="virtual-no" name="attending-virtually" value="No">
+                    <label for="virtual-no">No</label>
+                </div>
+        
+                <!-- Visa Support Letter -->
+                <label>Do you need a support letter for a visa to attend the NGUN at The Hague in May 2025?</label>
+                <div>
+                    <input type="radio" id="visa-yes" name="visa-support" value="Yes" required>
+                    <label for="visa-yes">Yes</label>
+                    <input type="radio" id="visa-no" name="visa-support" value="No">
+                    <label for="visa-no">No</label>
+                </div>
+        
+                <!-- Referral Source -->
+                <label for="referral">How did you hear about the NGUN conference?</label>
+                <select id="referral" name="referral" required>
+                    <option value="">Select an option</option>
+                    <option value="Referral">Referral</option>
+                    <option value="Organization/Institution">Organization/Institution</option>
+                    <option value="Email Advertisement">Email Advertisement</option>
+                    <option value="Social Media">Social Media</option>
+                </select>
+        
+                <!-- Submit Button -->
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer__container">
+        <div class="footer__links">
+            <div class="footer__link--wrapper">
+                <div class="footer__link--items">
+                    <h2>About Us</h2>
+                    <a href="/">How it works</a>
+                    <a href="/">Testimonials</a>
+                    <a href="/">Carrers</a>
+                    <a href="/">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="social__media">
+            <div class="social__media--wrap">
+                <div class="footer__logo">
+                    <a href="/front/index.html" id="footer_logo">
+                        <header class="header">
+                            <img src="/front/resources/ghrd-logo.png" alt="GHRD Logo" class="logo_GHRD">
+                            <img src="/front/resources/ngun_logo.png" alt="NGUN Logo" class="logo_NGUN">
+                        </header>
+                    </a>
+                </div>
+                <p class="website__rights">© NEXT 2025. All rights reserved</p>
+                <div class="social__icons">
+                    <a href="/" class="social__icon--link" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="/" class="social__icon--link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="/" class="social__icon--link" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+
+</html>

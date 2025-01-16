@@ -1,0 +1,33 @@
+{% extends 'dashboard/dashboard_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load custom %}
+
+
+{% block content %}
+
+<h1 style="color: #000000; text-align: center; margin:10px">Attendee: {{ attendee.first_name }} {{ attendee.last_name }}</h1>
+
+<div class="card mb-4" style="margin: 10px;">
+    <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        {% for field in fields %}
+                        <th>{{ field.verbose_name|capfirst }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for field in fields %}
+                            <td>{{ attendee|attr:field.name }}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+            <button style="margin-bottom: 10px;" text="text" class="btn ss-btn" data-animation="fadeInRight" data-delay=".8s"><a href="{% url 'attendees' %}">Go Back</a></button>
+        </div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends 'dashboard/dashboard_base.html' %}
+{% load static %}
+{% load custom %}
+
+{% block content %}
+
+<h1 style="margin: 25px; ">Attendees <a href="{% url 'add-attendee' %}"><button type="submit" class="btn ss-btn" 
+    data-animation="fadeInRight" data-delay=".8s" style="
+    color: white;
+    background: rgb(5, 76, 227);">
+    Add Attendee
+</button></a>
+</h1>
+
+{% if attendees %}
+<div class="card mb-4" style="margin: 10px;">
+    <div class="card-body">
+        <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>Options</th>
+                {% for field in fields %}
+                <th>{{ field.verbose_name|capfirst }}</th>
+                {% endfor %}
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attendee in attendees %}
+            <tr>
+                <td><a href="{% url 'attendee-detail' attendee.id %}">Detail</a>. <a href="{% url 'update-attendee' attendee.id %}">Update</a>. <a href="{% url 'delete-attendee' attendee.id %}">Delete.</a></td>
+                {% for field in fields %}
+                    <td>{{ attendee|attr:field.name }}</td>
+                {% endfor %}
+                <td>{{ attendee.age }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+{% else %}
+
+<h3 style="margin: 25px; ">No data yet! :( </h1>
+
+{% endif %}
+
+{% endblock content %}

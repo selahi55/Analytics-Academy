@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Humans Right Defense</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="{% url 'index' %}" id="navbar__logo">
+                <header class="header">
+                    <img src="{% static 'img/logo/ghrd-logo.png' %}" alt="GHRD Logo" class="logo_GHRD">
+                    <img src="{% static 'img/ngun_logo.png' %}" alt="NGUN Logo" class="logo_NGUN">
+                </header>
+            </a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="{% url 'index' %}" class="navbar__links">Event</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="{% url 'program' %}" class="navbar__links">Program</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="{% url 'apply' %}" class="button">Apply</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Errors or Messages -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- Content -->
+    {% block content %}
+    {% endblock content %}
+
+    <!-- Footer -->
+    <div class="footer__container">
+        <div class="footer__links">
+            <div class="footer__link--wrapper">
+                <div class="footer__link--items">
+                    <h2>About Us</h2>
+                    <br>
+                    <a href="https://ghrd.org/" target="_blank">GHRD</a>
+                    <a href="https://ngun.global/" target="_blank">NGUN</a>
+                    <a href="https://vsae.nl/en/students" target="_blank">VSAE</a>
+                </div>
+            </div>
+        </div>
+        <div class="social__media">
+            <div class="social__media--wrap">
+                <div class="footer__logo">
+                    <a href="/front/index.html" id="footer_logo">
+                        <header class="header">
+                            <img src="{% static 'img/logo/ghrd-logo.png' %}" alt="GHRD Logo" class="logo_GHRD">
+                            <img src="{% static 'img/ngun_logo.png' %}" alt="NGUN Logo" class="logo_NGUN">
+                        </header>
+                    </a>
+                </div>
+                <p class="website__rights">©VSAE 2025. All rights reserved</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+{% extends 'dashboard/dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1 style="margin: 25px; ">Dashboard</h1>
+
+{% if attendees %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+            <canvas id="myBarChart"></canvas>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+            <canvas id="myAreaChart"></canvas>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+            <canvas id="chart3"></canvas>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+            <canvas id="chart4"></canvas>
+        </div>
+    </div>
+</div>
+{% else %}
+
+<h3 style="margin: 25px; ">No data yet! :( </h1>
+
+{% endif %}
+
+{% endblock content %}

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analytics Academy Project</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +18,8 @@
         <div class="navbar__container">
             <a href="/front/index.html" id="navbar__logo">
                 <header class="header">
-                    <img src="/front/resources/ghrd-logo.png" alt="GHRD Logo" class="logo_GHRD">
-                    <img src="/front/resources/ngun_logo.png" alt="NGUN Logo" class="logo_NGUN">
+                    <img src="/static/img/logo/ghrd-logo.png" alt="GHRD Logo" class="logo_GHRD">
+                    <img src="/static/img/ngun_logo.png" alt="NGUN Logo" class="logo_NGUN">
                 </header>
             </a>
             <div class="navbar__toggle" id="mobile-menu">
@@ -126,27 +126,77 @@
         <div class="footer__links">
             <div class="footer__link--wrapper">
                 <div class="footer__link--items">
-                    <h2>About Us</h2>
+                    <h2>GHRD</h2>
                     <br>
-                    <a href="https://ghrd.org/" target="_blank">GHRD</a>
-                    <a href="https://ngun.global/" target="_blank">NGUN</a>
-                    <a href="https://vsae.nl/en/students" target="_blank">VSAE</a>
+                    <a href="https://ghrd.org/events/" target="_blank">Other Events</a>
+                    <a href="https://ngun.global/about-us/" target="_blank">About Us</a>
+                    <a href="https://ghrd.org/" target="_blank">Explore</a>
                 </div>
+                <div class="footer__link--items">
+                    <h2>NGUN</h2>
+                    <br>
+                    <a href="https://ngun.global/partnership-form/">Get Involved</a>
+                    <a href="https://ngun.global/about/">About Us</a> 
+                    <a href="https://ngun.global/">Explore</a>   
+                  </div>
             </div>
+            <div class="footer__link--wrapper">
+                <div class="footer__link--items">
+                  <h2>VSAE</h2>
+                  <br>
+                  <a href="https://vsae.nl/en/students/analytics-academy/for-the-ngo" target="_blank">Analytics Academy</a>
+                  <a href="https://vsae.nl/en/students/about-vsae" target="_blank">About Us</a> 
+                  <a href="https://vsae.nl/en/students/" target="_blank">Explore</a>
+                </div>
+              </div>
         </div>
-        <div class="social__media">
+        <section class="social__media">
             <div class="social__media--wrap">
                 <div class="footer__logo">
                     <a href="/front/index.html" id="footer_logo">
                         <header class="header">
-                            <img src="/front/resources/ghrd-logo.png" alt="GHRD Logo" class="logo_GHRD">
-                            <img src="/front/resources/ngun_logo.png" alt="NGUN Logo" class="logo_NGUN">
+                            <img src="/static/img/logo/ghrd-logo.png" alt="GHRD Logo" class="logo_GHRD">
+                            <img src="/static/img/ngun_logo.png" alt="NGUN Logo" class="logo_NGUN">
                         </header>
                     </a>
                 </div>
                 <p class="website__rights">© VSAE 2025. All rights reserved</p>
+                <div class="social__icons">
+                    <a
+                      class="social__icon--link"
+                      href="https://www.facebook.com/VSAEbestuur"
+                      target="_blank"
+                      aria-label="Facebook"
+                    >
+                      <i class="fab fa-facebook"></i>
+                    </a>
+                    <a
+                      class="social__icon--link"
+                      href="https://www.instagram.com/vsaeboard"
+                      target="_blank"
+                      aria-label="Instagram"
+                    >
+                      <i class="fab fa-instagram"></i>
+                    </a>
+                    <a
+                      class="social__icon--link"
+                      href="https://api.whatsapp.com/message/GOVCSLP74BTRL1?autoload=1&app_absent=0"
+                      target="_blank"
+                      aria-label="Whatsapp"
+                    >
+                      <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a
+                      class="social__icon--link"
+                      href="https://www.linkedin.com/in/uvavsae/"
+                      target="_blank"
+                      aria-label="LinkedIn"
+                    >
+                      <i class="fab fa-linkedin"></i>
+                    </a>
+                  </div>
             </div>
-        </div>
+        </section>
     </div>
     
     <script src="app.js"></script>

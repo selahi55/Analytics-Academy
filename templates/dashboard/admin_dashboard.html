@@ -9,21 +9,110 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-            <canvas id="myBarChart"></canvas>
+            <canvas id="agePieChart"></canvas>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-            <canvas id="myAreaChart"></canvas>
+            <canvas id="genderDonutChart"></canvas>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-            <canvas id="chart3"></canvas>
+      <div class="col-12 mb-4">
+      <div class="card text-center">
+        <div class="card-body">
+        <h5 class="card-title">KPIs</h5>
+        <p class="card-text">
+          <strong>Total Attendees:</strong> {{ total_attendees }}<br>
+          <hr>
+          <strong>Total Amount Paid:</strong> {{ total_amount|floatformat }}$<br>
+          <hr>
+          <strong>Average Age:</strong> {{ average_age|floatformat }}<br>
+          <hr>
+          <strong>Most Popular Nationality:</strong> {{ pop_nationality }}<br>
+          <hr>
+          <strong>Amount of Unaccepted Attendees:</strong> {{ unaccepted }}
+        </p>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-            <canvas id="chart4"></canvas>
-        </div>
+      </div>
+      </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Pie Chart Example
+    var ctx = document.getElementById("agePieChart");
+    var myPieChart = new Chart(ctx, {
+      type: 'pie',  // Change this to 'pie' for a pie chart
+      data: {
+        labels: [
+          {% for record in age_distribution %}
+            '{{ record.age }}',
+          {% endfor %}
+        ], 
+        datasets: [{
+          data: [
+            {% for record in age_distribution %}
+              {{ record.count }},
+            {% endfor %}
+          ],
+          backgroundColor: [
+            '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+          ],
+        }],
+      },
+      options: {
+        maintainAspectRatio: false, // Prevent stretching
+        responsive: true, // Enable responsive behavior
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Age Distribution of Attendees'
+          }
+        }
+      },
+    });
+    // Donut Chart Example
+    var ctx2 = document.getElementById("genderDonutChart");
+    var myDonutChart = new Chart(ctx2, {
+      type: 'doughnut',  // Change this to 'doughnut' for a donut chart
+      data: {
+      labels: [
+        {% for record in gender_distribution %} 
+        '{{ record.gender }}', 
+        {% endfor %}
+      ],
+      datasets: [{
+        data: [
+        {% for record in gender_distribution %} 
+          {{ record.count }}, 
+        {% endfor %}
+        ],
+        backgroundColor: [
+        '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+        ],
+      }],
+      },
+      options: {
+      maintainAspectRatio: false, // Prevent stretching
+      responsive: true, // Enable responsive behavior
+      plugins: {
+        legend: {
+        position: 'top',
+        },
+        title: {
+        display: true,
+        text: 'Gender Distribution of Attendees'
+        }
+      }
+      },
+    });
+   
+</script>
+
 {% else %}
 
 <h3 style="margin: 25px; ">No data yet! :( </h1>

@@ -23,7 +23,9 @@ class Command(BaseCommand):
                 linkedin=fake.url(),
                 virtual=random.choice(['Y', 'N']),
                 support_letter=random.choice(['Y', 'N']),
-                medium=random.choice(['R', 'E', 'S', 'O', 'OI'])
+                medium=random.choice(['R', 'E', 'S', 'O', 'OI']),
+                paid=random.choice(['Y', 'N']),
+                accepted="N",
             )
 
         for _ in range(50):

@@ -25,7 +25,6 @@ class Attendee(models.Model):
         SOCIAL_MEDIA = 'S', 'Social Media'
         OTHER = 'O', 'Other'
 
-
     YES_NO = (('Y', 'Yes'), ('N', 'No'))
 
     email = models.EmailField(unique=True)
@@ -60,7 +59,15 @@ class Attendee(models.Model):
         choices=Medium.choices,
         default=Medium.OTHER
     )
-
+    paid = models.CharField(max_length=1,
+        choices=YES_NO,
+        default="N",
+    )
+    accepted = models.CharField(max_length=1,
+        choices=YES_NO,
+        default="N",
+    )
+        
     registered_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

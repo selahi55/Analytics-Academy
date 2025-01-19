@@ -2,16 +2,52 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.core.mail import send_mail, send_mass_mail
 from django.conf import settings
+from django.db.models import Count, F, Avg
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
+
+from collections import Counter
 
 from .models import Attendee
 from .forms import EmailAttendee
 from .forms import AttendeeForm 
 
-@staff_member_required
+@login_required(login_url='login')
 def admin_dashboard(request):
-    attendees = Attendee.objects.all()
-    return render(request, 'dashboard/admin_dashboard.html', {"attendees": attendees})
+    attendees = Attendee.objects.order_by('registered_at')
+    ages = [attendee.age for attendee in attendees]
+    intervals = [(10, 25), (25, 40), (40, 55), (55, 70), (70, 85), (85, 100)]
+    interval_counts = {f"{start}-{end}": 0 for start, end in intervals}
+    for age in ages:
+        for start, end in intervals:
+            if start <= age < end:
+                interval_counts[f"{start}-{end}"] += 1
+                break
+    age_distribution = [{'age': key, 'count': value} for key, value in interval_counts.items()]
+
+    genders = [attendee.gender for attendee in attendees]
+    gender_counts = Counter(genders)
+    gender_distribution = [{'gender': key, 'count': value} for key, value in gender_counts.items()]
+
+    country = [attendee.country for attendee in attendees]
+    country_counts = Counter(country)
+    nationality_distribution = [{'country': key, 'count': value} for key, value in country_counts.most_common(5)]
+
+    average_age = sum(ages)/len(ages) if len(ages) > 1 else ages
+    total_attendees = Attendee.objects.all().count()
+    total_amount = Attendee.objects.filter(paid="Y").count() * 100
+    pop_nationality = attendees.values('country').annotate(count=Count('country')).order_by('-count').first()['country']
+    unaccepted = attendees.filter(accepted="N").count()
+
+    return render(request, 'dashboard/admin_dashboard.html', {"attendees": attendees,
+                                                              "age_distribution": age_distribution,
+                                                              "gender_distribution": gender_distribution,
+                                                              "average_age": average_age,
+                                                              "total_attendees": total_attendees,
+                                                              "total_amount": total_amount,
+                                                              "pop_nationality": pop_nationality,
+                                                              "country_distribution": nationality_distribution,
+                                                              "unaccepted": unaccepted})
 
 @staff_member_required
 def attendees(request):

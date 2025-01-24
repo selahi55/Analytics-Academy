@@ -10,6 +10,12 @@
     background: rgb(5, 76, 227);">
     Add Attendee
 </button></a>
+<a href="{% url 'email-all' %}"><button type="submit" class="btn ss-btn" 
+    data-animation="fadeInRight" data-delay=".8s" style="
+    color: white;
+    background: rgb(5, 76, 227);">
+    Email all Attendees
+</button></a>
 </h1>
 
 {% if attendees %}
@@ -28,7 +34,7 @@
         <tbody>
             {% for attendee in attendees %}
             <tr>
-                <td><a href="{% url 'attendee-detail' attendee.id %}">Detail</a>. <a href="{% url 'update-attendee' attendee.id %}">Update</a>. <a href="{% url 'delete-attendee' attendee.id %}">Delete.</a></td>
+                <td><a href="{% url 'attendee-detail' attendee.id %}">Detail</a>. <a href="{% url 'update-attendee' attendee.id %}">Update</a>. <a href="{% url 'delete-attendee' attendee.id %}">Delete.</a> <a href="{% url 'email-attendee' attendee.id %}">Email.</a></td>
                 {% for field in fields %}
                     <td>{{ attendee|attr:field.name }}</td>
                 {% endfor %}

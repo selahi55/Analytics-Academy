@@ -15,18 +15,6 @@
                 gap: 15px;">
                     {{ form|crispy }}
                 </div>
-                <!-- Credit Card Form -->
-                <div class="credit-card-form" style="
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-                margin-top: 20px;">
-                    <h3>Card Payment</h3>
-                    <div id="card-element">
-                        <!-- Stripe Element will be inserted here -->
-                    </div>
-                    <div id="card-errors" role="alert"></div>
-                </div>
                 <!-- Submit Button -->
                 <button id="submit-button" type="submit" style="
                 width: 100%;
@@ -62,64 +50,5 @@
             outline: none;
         }
     </style>
-    <script src="https://js.stripe.com/v3/"></script>
-    <script>
-    // Set your publishable key
-    var stripe = Stripe('STRIPE_KEY');
-    var elements = stripe.elements();
-
-    // Create an instance of the card Element
-    var card = elements.create('card');
-    card.mount('#card-element');
-
-    // Handle real-time validation errors from the card Element
-    card.on('change', function(event) {
-        var displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-    });
-
-    // Handle form submission
-    var form = document.getElementById('payment-form');
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            fetch('/create-payment-intent/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}'
-                },
-                body: JSON.stringify({
-                    amount: 1000  // amount in cents
-                })
-            }).then(function(response) {
-                return response.json();
-            }).then(function(paymentIntentResponse) {
-                if (paymentIntentResponse.error) {
-                    var errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = paymentIntentResponse.error;
-                } else {
-                    stripe.confirmCardPayment(paymentIntentResponse.client_secret, {
-                        payment_method: {
-                            card: card
-                        }
-                    }).then(function(result) {
-                        if (result.error) {
-                            var errorElement = document.getElementById('card-errors');
-                            errorElement.textContent = result.error.message;
-                        } else {
-                            if (result.paymentIntent.status === 'succeeded') {
-                                form.submit();
-                            }
-                        }
-                    });
-                }
-            });
-        });
-</script>
 
 {% endblock content %}

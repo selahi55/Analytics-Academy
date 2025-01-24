@@ -9,8 +9,7 @@ from django.contrib.auth.decorators import login_required
 from collections import Counter
 
 from .models import Attendee
-from .forms import EmailAttendee
-from .forms import AttendeeForm 
+from .forms import EmailAttendee, AttendeeForm, EmailAttendees
 
 @login_required(login_url='login')
 def admin_dashboard(request):
@@ -112,24 +111,39 @@ def delete_attendee(request, id):
                                                                   "fields": fields})
 
 @staff_member_required
-def send_mail_to_attendee(request, id):
+def email_attendee(request, id):
     attendee = get_object_or_404(Attendee, id=id)
 
     if request.method == 'POST':
-        form = EmailAttendee(data=request.POST)
+        form = EmailAttendee(data=request)
         if form.is_valid():
-            cd   = form.cleaned_data
+            cd = form.cleaned_data
             send_mail(
                 cd['subject'],
                 cd['message'],
                 settings.DEFAULT_FROM_MAIL,
                 [attendee.email],
-                fail_silently=False,
             )
-            messages.success(request,'Email sent successfully.')
             return redirect('dashboard')
     else:
-        form = EmailAttendee()  
+        form = EmailAttendee()
     return render(request, 'dashboard/email_attendee.html', {'form': form,
-                                                          'attendee': attendee})
+                                                             'attendee': attendee})
 
+@staff_member_required
+def email_attendees(request):
+    if request.method == 'POST':
+        form = EmailAttendees(data=request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            recipient_list = [attendee.email for attendee in cd['to_email']]
+            send_mail(
+                subject=cd['subject'],
+                message=cd['message'],
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=recipient_list,
+            )
+            return redirect('dashboard')
+    else:
+        form = EmailAttendees()
+    return render(request, 'dashboard/email_all.html', {'form': form})

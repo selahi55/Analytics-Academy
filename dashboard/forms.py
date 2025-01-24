@@ -85,6 +85,15 @@ class AttendeeForm(forms.ModelForm):
         return dob
 
 class EmailAttendee(forms.Form):
-    to_email = forms.EmailField(label='Email', required=True, max_length=100)
+    subject = forms.CharField(max_length=100, required=True)
+    message = forms.CharField(max_length=500, required=True, widget=forms.Textarea)
+
+class EmailAttendees(forms.Form):
+    to_email = forms.ModelMultipleChoiceField(
+        queryset=Attendee.objects.all(),
+        widget=forms.SelectMultiple(attrs={'class': 'selectpicker', 'data-live-search': 'true', 'size': 10}),
+        label='Select Attendees',
+        required=True
+    )
     subject = forms.CharField(label='Subject', required=True, max_length=100)
     message = forms.CharField(label='Message', required=True, max_length=500, widget=forms.Textarea)

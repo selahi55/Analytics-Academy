@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "-kc&&l!g73=_-ih9n7(^ymgf37n=18yhz9h5v@59_p37!5_%=)"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['ghrd-events.up.railway.app', 'ghrd-events.railway.internal', 'ghrd-events',
                  'https://ghrd-events.up.railway.app']      

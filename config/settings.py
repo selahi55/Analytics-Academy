@@ -32,6 +32,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['ghrd-events.up.railway.app', 'ghrd-events.railway.internal', 'ghrd-events',
                  'https://ghrd-events.up.railway.app']      
 
+CSRF_TRUSTED_ORIGINS = ['https://ghrd-events.up.railway.app']
+
+
 # Application definition
 
 INSTALLED_APPS = [

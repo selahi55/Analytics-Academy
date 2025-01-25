@@ -90,12 +90,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'railway',
         'USER': 'postgres',
         'PASSWORD': 'hUahVQubZvShrtXKYMhBvQstuuaBmnsf',
-        'HOST': 'autorack.proxy.rlwy.net:48560',
-        'PORT': '5432',
+        'HOST': 'autorack.proxy.rlwy.net',
+        'PORT': '48560',
     }
 }
 

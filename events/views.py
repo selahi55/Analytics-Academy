@@ -14,8 +14,8 @@ def apply(request):
         form = UserAttendeeForm(data=request.POST)
         if form.is_valid():
             form.save()
-            # Send email
-            messages.success(request, 'You have applied successfully. Please check your inbox for further details.')
+            
+            messages.success(request, 'You have applied successfully. We will get back to you soon.')
             return redirect('index')
     else:
         form = UserAttendeeForm()

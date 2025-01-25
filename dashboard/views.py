@@ -14,6 +14,14 @@ from .forms import EmailAttendee, AttendeeForm, EmailAttendees
 @login_required(login_url='login')
 def admin_dashboard(request):
     attendees = Attendee.objects.order_by('registered_at')
+    age_distribution = []
+    gender_distribution = []
+    nationality_distribution = []
+    average_age = 0
+    total_attendees = 0
+    total_amount = 0
+    pop_nationality = ''
+    unaccepted = 0
     if attendees.count() != 0:
         ages = [attendee.age for attendee in attendees]
         intervals = [(10, 25), (25, 40), (40, 55), (55, 70), (70, 85), (85, 100)]
@@ -38,7 +46,6 @@ def admin_dashboard(request):
         total_amount = Attendee.objects.filter(paid="Y").count() * 100
         pop_nationality = attendees.values('country').annotate(count=Count('country')).order_by('-count').first()['country']
         unaccepted = attendees.filter(accepted="N").count()
-        return render(request, 'dashboard/admin_dashboard.html',{})
     return render(request, 'dashboard/admin_dashboard.html', {"attendees": attendees,
                                                               "age_distribution": age_distribution,
                                                               "gender_distribution": gender_distribution,

@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['analytics-academy.railway.internal', 'analytics-academy']      
+ALLOWED_HOSTS = ['analytics-academy-production.up.railway.app', 'analytics-academy.railway.internal', 'analytics-academy']      
 
 
 # Application definition

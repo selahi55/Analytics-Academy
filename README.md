@@ -11,6 +11,7 @@ The **Analytics Academy** is the web platform for [VSAE](https://vsae.nl/en/comp
 Each project round, teams of 3-5 motivated students working 4–6 hours per week over 10–15 weeks to deliver data-driven insights to a partner organisation. Projects kick off with a pitch event where organisations present their challenges, and conclude with a final presentation of findings and recommendations.
 
 **Parthner for this Project:** Global Human Rights Defence (GHRD)
+
 **Project contributors:** Kiril - Team Lead, Shayaan and Nastya - Team Members
 
 ---

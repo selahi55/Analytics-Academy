@@ -1,20 +1,16 @@
-# 📊 Analytics Academy
+# 📊 Analytics Academy in VSAE
 
-The **Analytics Academy** is the web platform for [VSAE](https://vsae.nl/en/companies)'s flagship educational initiative that connects econometrics students from the University of Amsterdam with non-profit organizations. Built with Django, it powers event management, project coordination, and the operational backbone of the programme.
+The **Analytics Academy** is the web platform for [VSAE](https://vsae.nl/en/companies)'s flagship educational initiative that connects econometrics students from the University of Amsterdam with non-profit organizations.
 
 > **Mission:** Bridge the gap between data-savvy students and NGOs/social organisations that lack access to high-quality data analytics — creating real impact for non-profits while giving students hands-on consultancy experience.
 
 ---
 
-## About the Analytics Academy
-
-The Analytics Academy is organised by **VSAE** (Vereniging Studievereniging Actuariaat en Econometrie), the study association for Actuarial Science and Econometrics at the University of Amsterdam.
+## About the Analytics Academy Project
 
 Each project round, teams of 3-5 motivated students (Kiril - Team Lead, Shayaan and Nastya - Team Members) working 4–6 hours per week over 10–15 weeks to deliver data-driven insights to a partner organisation. Projects kick off with a pitch event where organisations present their challenges, and conclude with a final presentation of findings and recommendations.
 
-**Two rounds per year:** September–December and February–June.
-
-**Past partner organisations include:** Oxfam Novib, KWF (Dutch Cancer Foundation), Paradiso Amsterdam, Ambulance IJsselland, and Stadsschouwburg Amsterdam.
+**Parthner for this Project:** Global Human Rights Defence (GHRD)
 
 ---
 

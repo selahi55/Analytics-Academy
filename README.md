@@ -1,4 +1,4 @@
-# 📊 Analytics Academy in VSAE
+# 📊 Analytics Academy and the VSAE
 
 The **Analytics Academy** is the web platform for [VSAE](https://vsae.nl/en/companies)'s flagship educational initiative that connects econometrics students from the University of Amsterdam with non-profit organizations.
 
